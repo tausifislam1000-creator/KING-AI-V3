@@ -63,12 +63,6 @@
     .stat-value{font-size:20px;font-weight:700;color:var(--gold);}
     .stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;}
 
-    .model-picker-wrap{padding:14px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .model-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:block;font-weight:600;}
-    #model-select{width:100%;background:var(--surface2);color:var(--gold);border:1px solid rgba(240,192,64,0.3);padding:10px;border-radius:8px;font-family:'Inter',sans-serif;cursor:pointer;outline:none;font-size:12px;font-weight:500;transition:all 0.3s ease;}
-    #model-select:hover{border-color:rgba(240,192,64,0.6);box-shadow:0 0 12px rgba(240,192,64,0.2);}
-    #model-select:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(240,192,64,0.4);}
-
     .chat-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden;}
     .messages{flex:1;overflow-y:auto;padding:28px 24px;display:flex;flex-direction:column;gap:24px;}
     .msg{display:flex;gap:13px;max-width:880px;width:100%;align-self:center;animation:messageSlideIn 0.4s ease-out forwards;}
@@ -85,6 +79,12 @@
     .action-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
     .action-btn{padding:7px 13px;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:10px;color:var(--text);font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s ease;}
     .action-btn:hover{background:rgba(240,192,64,0.15);border-color:rgba(240,192,64,0.4);}
+    
+    .model-selector{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:0;}
+    .model-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;white-space:nowrap;}
+    #model-select{flex:1;max-width:200px;background:var(--surface2);color:var(--gold);border:1px solid rgba(240,192,64,0.3);padding:8px 10px;border-radius:8px;font-family:'Inter',sans-serif;cursor:pointer;outline:none;font-size:12px;font-weight:500;transition:all 0.3s ease;}
+    #model-select:hover{border-color:rgba(240,192,64,0.6);box-shadow:0 0 12px rgba(240,192,64,0.2);}
+    #model-select:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(240,192,64,0.4);}
     
     .input-wrap{display:flex;align-items:flex-end;gap:11px;background:rgba(15,20,32,0.8);border:1.5px solid rgba(240,192,64,0.2);border-radius:16px;padding:12px 16px;}
     #chat-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:14px;resize:none;max-height:120px;}
@@ -125,21 +125,6 @@
         <div class="stat-card"><div class="stat-value" id="msg-count">0</div><div class="stat-label">Messages</div></div>
         <div class="stat-card"><div class="stat-value" id="session-time">0m</div><div class="stat-label">Session</div></div>
       </div>
-
-      <div class="model-picker-wrap">
-        <label class="model-label">Select Your King</label>
-        <select id="model-select">
-          <option value="anthropic/claude-3.5-haiku-20241022">C-3.5 haiku</option>
-          <option value="anthropic/claude-3.5-sonnet-20240620">C-3.5 sonnet</option>
-          <option value="anthropic/claude-3-sonnet">C-3 sonnet</option>
-          <option value="deepseek/deepseek-r1-0528:free">Deepseek-R1</option>
-          <option value="google/gemini-2.5-flash-preview-09-2025">Gemini-2.5flash</option>
-          <option value="qwen/qwen3-vl-30b-a3b-thinking">Qwen-3</option>
-          <option value="openai/gpt-4.5-preview">GPT-4.5</option>
-          <option value="openai/chatgpt-4o-latest">CHATGPT-4o</option>
-          <option value="openai/codex-mini">Codex-Mini</option>
-        </select>
-      </div>
     </aside>
     
     <div class="chat-wrap">
@@ -156,6 +141,22 @@
             <button class="action-btn" onclick="clearChat()">🗑️ Clear History</button>
             <div id="char-count" style="font-size:11px; color:var(--muted)">0 / 2000</div>
           </div>
+
+          <div class="model-selector">
+            <label class="model-label">👑 Select Model:</label>
+            <select id="model-select">
+              <option value="anthropic/claude-3.5-haiku-20241022">C-3.5 haiku</option>
+              <option value="anthropic/claude-3.5-sonnet-20240620">C-3.5 sonnet</option>
+              <option value="anthropic/claude-3-sonnet">C-3 sonnet</option>
+              <option value="deepseek/deepseek-r1-0528:free">Deepseek-R1</option>
+              <option value="google/gemini-2.5-flash-preview-09-2025">Gemini-2.5flash</option>
+              <option value="qwen/qwen3-vl-30b-a3b-thinking">Qwen-3</option>
+              <option value="openai/gpt-4.5-preview">GPT-4.5</option>
+              <option value="openai/chatgpt-4o-latest">CHATGPT-4o</option>
+              <option value="openai/codex-mini">Codex-Mini</option>
+            </select>
+          </div>
+
           <div class="input-wrap">
             <textarea id="chat-input" placeholder="Ask your King..." rows="1" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';updateCount()"></textarea>
             <button class="send-btn" onclick="sendMsg()">➤</button>
