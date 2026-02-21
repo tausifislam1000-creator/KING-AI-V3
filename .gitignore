@@ -1,0 +1,49 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.m2/
+
+# Gradle
+.gradle/
+build/
+*.jar
+
+# Spring Boot
+*.log
+application-*.yml
+application-*.properties
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node (if used)
+node_modules/
+npm-debug.log
+
+# Docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive files
+*.key
+*.pem
+*.p8
+secrets/

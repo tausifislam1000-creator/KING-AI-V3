@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: King AI
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# OpenRouter API Configuration
+openrouter:
+  api:
+    key: ${OPENROUTER_API_KEY:your-api-key-here}
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    com.kingai: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
